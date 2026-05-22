@@ -688,6 +688,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function bindReplaySection({ trigger, start = 'top 75%', end = 'bottom 25%', items }) {
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        items.forEach(item => gsap.set(item.selector, item.visible));
+        return;
+      }
+
       items.forEach(item => gsap.set(item.selector, item.hidden));
 
       const show = () => {
