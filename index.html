@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jimmy's Coffee | Drive-Thru Specialty Coffee Ireland</title>
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+  </script>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Welcome to Jimmy's Coffee, Ireland's first purpose-built specialty drive-thru coffee station. Ethically sourced beans from Roasted Brown, served with a warm Irish smile in Swinford, Ballina, Cavan Town, and Tuam.">
+  <meta name="keywords" content="Jimmys Coffee, Drive Thru Coffee Ireland, Specialty Coffee Mayo, Swinford Coffee, Ballina Coffee, Cavan Coffee, Tuam Coffee, Galway Coffee, Roasted Brown">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jimmy's Coffee | Drive-Thru Specialty Coffee Ireland">
+  <meta property="og:description" content="Experience consistent excellence on-the-go. Specialty coffee by Roasted Brown, freshly-baked pastries and gourmet sourdough sandwiches.">
+  <meta property="og:image" content="assets/Screenshot 2026-05-20 130900.png">
+  <meta property="og:url" content="https://jimmyscoffee.ie/">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Custom Styling -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- ======================================================================= -->
+  <!-- 1. PRELOADER & SKELETON SCREEN                                           -->
+  <!-- ======================================================================= -->
+  <div id="preloader" class="preloader">
+    <div class="loader-content">
+      <div class="loader-cup-container">
+        <svg class="loader-cup-svg" viewBox="0 0 100 100">
+          <defs>
+            <clipPath id="loader-cup-clip">
+              <path d="M20,30 L80,30 L72,80 C71,85 66,90 60,90 L40,90 C34,90 29,85 28,80 Z"/>
+            </clipPath>
+          </defs>
+          <rect id="loader-liquid" x="20" y="90" width="60" height="60" clip-path="url(#loader-cup-clip)"/>
+          <path d="M20,30 L80,30 L72,80 C71,85 66,90 60,90 L40,90 C34,90 29,85 28,80 Z" fill="none" stroke="currentColor" stroke-width="4"/>
+          <path d="M80,40 C85,40 90,44 90,50 C90,56 85,60 80,60" fill="none" stroke="currentColor" stroke-width="4"/>
+        </svg>
+      </div>
+      <div class="loader-text">Brewing Excellence... <span id="loader-percentage">0%</span></div>
+      <div class="loader-bar-outer">
+        <div id="loader-bar-inner" class="loader-bar-inner"></div>
+      </div>
+    </div>
+    <div class="skeleton-underlay">
+      <div class="skeleton-header"></div>
+      <div class="skeleton-hero">
+        <div class="skeleton-hero-left">
+          <div class="skeleton-title"></div>
+          <div class="skeleton-subtitle"></div>
+          <div class="skeleton-button"></div>
+        </div>
+        <div class="skeleton-hero-right"></div>
+      </div>
+      <div class="skeleton-grid">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 2. MINIMAL CENTERED HEADER — LOGO ONLY                                  -->
+  <!-- ======================================================================= -->
+  <header id="main-header" class="main-header">
+    <div class="header-container">
+      <a href="#hero" class="logo-link" id="logo-link">
+        <img src="assets/logo.png" alt="Jimmy's Coffee Logo" class="logo-img">
+      </a>
+      <nav class="header-nav" id="header-nav">
+        <a href="#about" class="nav-link">About Us</a>
+        <a href="#locations" class="nav-link">Locations</a>
+        <a href="#menu" class="nav-link">Menu</a>
+        <a href="#rewards" class="nav-link">Brew Stars</a>
+        <a href="#contact" class="nav-link">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======================================================================= -->
+  <!-- 3. HERO SECTION                                                          -->
+  <!-- ======================================================================= -->
+  <section id="hero" class="hero-section">
+    <div class="parallax-layer-far"  aria-hidden="true"></div>
+    <div class="parallax-layer-mid"  aria-hidden="true"></div>
+    <div class="parallax-layer-near" aria-hidden="true"></div>
+    <div class="hero-radial-bg"></div>
+    <div class="hero-container grid-2">
+      <div class="hero-content">
+        <div class="badge-accent" id="hero-badge">Specialty Drive-Thru Barista Bar</div>
+        <h1 class="hero-title">
+          Tailored Crafts,<br>
+          <span class="text-gold animate-glow">Serving One Purpose</span>
+        </h1>
+        <p class="hero-lead">
+          Jimmy's is Ireland's premier purpose-built specialty drive-thru coffee chain. Enjoy consistent excellence on-the-go, crafted with professional machinery and a warm Irish smile.
+        </p>
+        <div class="hero-actions">
+          <a href="#menu" class="btn btn-primary" id="btn-view-menu">Explore Our Menu</a>
+          <a href="#locations" class="btn btn-outline" id="btn-view-locations">Locations &amp; Hours</a>
+        </div>
+
+        <div class="hero-features-grid">
+          <div class="hero-feature-card">
+            <span class="feature-icon">☕</span>
+            <div class="feature-info">
+              <h4>Roasted Brown</h4>
+              <p>100% ethically sourced, premium single-origin beans</p>
+            </div>
+          </div>
+          <div class="hero-feature-card">
+            <span class="feature-icon">🥐</span>
+            <div class="feature-info">
+              <h4>Fresh Bakery</h4>
+              <p>Freshly baked pastries &amp; golden sausage rolls served daily</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-wrapper">
+        <div class="grid-layout-frame">
+          <div class="microgrid-dot bg-dot-top-left"></div>
+          <div class="microgrid-dot bg-dot-bottom-right"></div>
+          <div class="image-card glow-border">
+            <video class="hero-image hero-video" autoplay muted loop playsinline preload="metadata" aria-label="Jimmy's coffee shot being poured">
+              <source src="assets/Shot.mp4" type="video/mp4">
+            </video>
+            <div class="image-overlay-card">
+              <span class="card-icon">⭐</span>
+              <div>
+                <h5>Wicklow Sourced</h5>
+                <p>Custom Roasted Brown blends</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- 4. ABOUT SECTION                                                         -->
+  <!-- ======================================================================= -->
+  <section id="about" class="about-section">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <h2 class="section-title">About Us</h2>
+        <div class="title-underline"></div>
+        <p class="section-subtitle">
+          Built around quality, community, and connection, Jimmy's is here to make every visit feel warm, easy, and memorable.
+        </p>
+      </div>
+
+      <div class="about-grid grid-2">
+        <div class="about-image-card">
+          <img src="assets/Eoin and Tom.webp" alt="Eoin Duffy and Tom Duffy, founders of Jimmy's Coffee" class="about-img">
+          <div class="experience-badge">
+            <span class="badge-num">2021</span>
+            <span class="badge-txt">Founded in Mayo</span>
+          </div>
+        </div>
+        <div class="about-text-content">
+          <h3 class="about-heading">About Us</h3>
+          <p class="about-paragraph">
+            Jimmy's Coffee was established in 2021 by Eóin Duffy and Tom Duffy, proudly from Mayo, Ireland.
+          </p>
+          <p class="about-paragraph">
+            What began with a simple idea has grown into a welcoming space built around quality, community, and connection. At Jimmy's, our goal has always been clear: to serve consistently high-quality coffee, fresh food, and great produce while putting people at the heart of everything we do.
+          </p>
+          <p class="about-paragraph">
+            From the customers we welcome each day to the team behind every cup, we believe great coffee is about more than what's served. It's about creating moments, conversations, and experiences that keep people coming back.
+          </p>
+          <p class="about-paragraph">
+            Whether you're grabbing your morning coffee, meeting friends, or stopping by on the go, Jimmy's is here to serve every visit with quality, warmth, and a smile.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- 5. GSAP PARALLAX CUP SHOWCASE                                           -->
+  <!-- ======================================================================= -->
+  <section id="showcase" class="showcase-section">
+
+    <!-- Scrolling Marquee -->
+    <div class="marquee-wrapper">
+      <div class="marquee-track" id="marquee-track">
+        <div class="marquee-content">
+          <span>SPECIALTY COFFEE</span><span class="marquee-sep">•</span>
+          <span>ETHICALLY SOURCED</span><span class="marquee-sep">•</span>
+          <span>ROASTED BROWN WICKLOW</span><span class="marquee-sep">•</span>
+          <span>FRESH DAILY</span><span class="marquee-sep">•</span>
+          <span>BROWNIE WITH EVERY COFFEE</span><span class="marquee-sep">•</span>
+          <span>DRIVE-THRU &amp; WALK-UP</span><span class="marquee-sep">•</span>
+          <span>SPECIALTY COFFEE</span><span class="marquee-sep">•</span>
+          <span>ETHICALLY SOURCED</span><span class="marquee-sep">•</span>
+          <span>ROASTED BROWN WICKLOW</span><span class="marquee-sep">•</span>
+          <span>FRESH DAILY</span><span class="marquee-sep">•</span>
+          <span>BROWNIE WITH EVERY COFFEE</span><span class="marquee-sep">•</span>
+          <span>DRIVE-THRU &amp; WALK-UP</span><span class="marquee-sep">•</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Headline -->
+    <div class="showcase-headline-wrapper">
+      <div class="showcase-headline">
+        <span class="sh-label">The Jimmy's Experience</span>
+        <h2 class="sh-title">Crafted for the<br><em>Road Ahead</em></h2>
+      </div>
+    </div>
+
+    <!-- Parallax Floating Cups -->
+    <div class="parallax-stage" id="parallax-stage">
+      
+      <!-- Central Glow Halo revealed behind the cups -->
+      <div class="center-glow-halo" id="pcup-halo"></div>
+
+      <!-- Splitting coffee image in the center -->
+      <div class="bean-container" id="bean-container">
+        <img src="assets/Coffee.png" alt="" class="bean-half bean-half-image bean-half-image-left" id="bean-half-left" aria-hidden="true">
+        <img src="assets/Coffee.png" alt="" class="bean-half bean-half-image bean-half-image-right" id="bean-half-right" aria-hidden="true">
+      </div>
+
+      <!-- Cup 1: Black Lid Cup -->
+      <div class="p-cup p-cup--black-lid" id="pcup-black-lid">
+        <div class="p-cup-inner">
+          <img src="assets/cup_black_lid.png" alt="Jimmy's signature flat white hot cup with black lid" class="p-cup-img" id="cup-img-1">
+        </div>
+      </div>
+
+      <!-- Cup 2: Iced Latte Cup -->
+      <div class="p-cup p-cup--iced-latte" id="pcup-iced-latte">
+        <div class="p-cup-inner">
+          <img src="assets/cup_iced_latte.png" alt="Jimmy's iced gourmet latte glass with straw and brownie bite" class="p-cup-img" id="cup-img-2">
+        </div>
+      </div>
+
+      <!-- Cup 3: Latte Art Cup -->
+      <div class="p-cup p-cup--latte-art" id="pcup-latte-art">
+        <div class="p-cup-inner">
+          <img src="assets/cup_latte_art.png" alt="Jimmy's latte art heart pour top-down view" class="p-cup-img" id="cup-img-3">
+        </div>
+      </div>
+
+      <!-- Cup 4: Almond Iced Latte Cup -->
+      <div class="p-cup p-cup--almond" id="pcup-almond">
+        <div class="p-cup-inner">
+          <img src="assets/cup_almond.png" alt="Jimmy's almond milk iced latte swirl cup" class="p-cup-img" id="cup-img-4">
+        </div>
+      </div>
+
+      <!-- Floating ambient elements -->
+      <div class="ambient-beans" id="ambient-beans">
+        <span class="amb-bean" style="left:8%;top:20%">☕</span>
+        <span class="amb-bean" style="left:82%;top:15%">🍀</span>
+        <span class="amb-bean" style="left:20%;top:70%">✦</span>
+        <span class="amb-bean" style="left:75%;top:65%">☕</span>
+        <span class="amb-bean" style="left:50%;top:10%">✦</span>
+        <span class="amb-bean" style="left:5%;top:55%">🍀</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- 6. LOCATIONS & HOURS                                                     -->
+  <!-- ======================================================================= -->
+  <section id="locations" class="locations-section">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Visit Our Drive-Thrus</h2>
+        <div class="title-underline"></div>
+        <p class="section-subtitle">
+          Pull up, order, and be on your way in minutes. Check out our active locations and their real-time open status.
+        </p>
+      </div>
+
+      <div class="locations-grid">
+
+        <!-- Location 1: Swinford -->
+        <div class="location-card" id="location-swinford">
+          <div class="location-status-bar">
+            <span class="location-city">Swinford, Mayo</span>
+            <span class="status-badge" id="status-swinford">
+              <span class="status-dot"></span>
+              <span class="status-text">Checking...</span>
+            </span>
+          </div>
+          <div class="location-body">
+            <h3 class="location-title">Dublin Road (N26)</h3>
+            <p class="location-desc">Located on the main Dublin Road on the N26, our Swinford store offers locals and long distance travellers a quality caffeine hit, all with speed and smiles.</p>
+
+            <div class="hours-list">
+              <div class="hours-row" data-day="weekday">
+                <span class="days">Monday – Friday</span>
+                <span class="time">07:00 – 16:30</span>
+              </div>
+              <div class="hours-row" data-day="saturday">
+                <span class="days">Saturday</span>
+                <span class="time">08:30 – 17:00</span>
+              </div>
+              <div class="hours-row" data-day="sunday">
+                <span class="days">Sunday</span>
+                <span class="time">08:30 – 16:00</span>
+              </div>
+            </div>
+
+            <div class="location-details">
+              <div class="detail-item">
+                <span class="detail-icon">📍</span>
+                <span>N26 Dublin Rd, Swinford, Mayo</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">#</span>
+                <span>F12C7N0</span>
+              </div>
+            </div>
+
+            <div class="map-container">
+              <div class="mock-map">
+                <span class="pin">📍</span>
+                <span class="map-label">Jimmy's Swinford N26</span>
+              </div>
+              <a href="https://maps.google.com/?q=Jimmys+Coffee+Swinford" target="_blank" rel="noopener" class="btn-map" id="map-link-swinford">Get Directions</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Location 2: Ballina -->
+        <div class="location-card" id="location-ballina">
+          <div class="location-status-bar">
+            <span class="location-city">Ballina, Mayo</span>
+            <span class="status-badge" id="status-ballina">
+              <span class="status-dot"></span>
+              <span class="status-text">Checking...</span>
+            </span>
+          </div>
+          <div class="location-body">
+            <h3 class="location-title">Pearse Street (Dillon Terrace)</h3>
+            <p class="location-desc">Jimmy's 2nd location is right in the heart of Ballina Town. With exits back towards the town centre, Dublin and Sligo Roads, we are situated perfectly for car users.</p>
+
+            <div class="hours-list">
+              <div class="hours-row" data-day="weekday">
+                <span class="days">Monday – Friday</span>
+                <span class="time">07:00 – 17:00</span>
+              </div>
+              <div class="hours-row" data-day="saturday">
+                <span class="days">Saturday</span>
+                <span class="time">08:00 – 17:00</span>
+              </div>
+              <div class="hours-row" data-day="sunday">
+                <span class="days">Sunday</span>
+                <span class="time">08:30 – 17:00</span>
+              </div>
+            </div>
+
+            <div class="location-details">
+              <div class="detail-item">
+                <span class="detail-icon">📍</span>
+                <span>Pearse St, Dillon Terrace, Ballina, Mayo</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">#</span>
+                <span>F26N5X7</span>
+              </div>
+            </div>
+
+            <div class="map-container">
+              <div class="mock-map map-ballina">
+                <span class="pin">📍</span>
+                <span class="map-label">The Biden Corner Ballina</span>
+              </div>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=Jimmy%27s%20Drive%20Thru%20Coffee%2C%20Dillon%20Terrace%2C%20Ballina%2C%20Co.%20Mayo%2C%20F26%20N5X7" target="_blank" rel="noopener" class="btn-map" id="map-link-ballina">Get Directions</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Location 3: Cavan -->
+        <div class="location-card" id="location-cavan">
+          <div class="location-status-bar">
+            <span class="location-city">Cavan Town, Cavan</span>
+            <span class="status-badge" id="status-cavan">
+              <span class="status-dot"></span>
+              <span class="status-text">Checking...</span>
+            </span>
+          </div>
+          <div class="location-body">
+            <h3 class="location-title">Railway Road</h3>
+            <p class="location-desc">Jimmy's Cavan is located on Railway Road in Cavan Town. Opened in October 2025, we have received a warm welcome and look forward to becoming a part of the Cavan community.</p>
+
+            <div class="hours-list">
+              <div class="hours-row" data-day="daily">
+                <span class="days">Monday – Sunday</span>
+                <span class="time">07:00 – 17:00</span>
+              </div>
+            </div>
+
+            <div class="location-details">
+              <div class="detail-item">
+                <span class="detail-icon">📍</span>
+                <span>Railway Road, Cavan Town, Cavan</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">#</span>
+                <span>H12R2C1</span>
+              </div>
+            </div>
+
+            <div class="map-container">
+              <div class="mock-map map-cavan">
+                <span class="pin">📍</span>
+                <span class="map-label">Jimmy's Cavan Railway Road</span>
+              </div>
+              <a href="https://maps.google.com/?q=Jimmys+Coffee+Railway+Road+Cavan" target="_blank" rel="noopener" class="btn-map" id="map-link-cavan">Get Directions</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Location 4: Tuam -->
+        <div class="location-card" id="location-tuam">
+          <div class="location-status-bar">
+            <span class="location-city">Tuam, Galway</span>
+            <span class="status-badge" id="status-tuam">
+              <span class="status-dot"></span>
+              <span class="status-text">Checking...</span>
+            </span>
+          </div>
+          <div class="location-body">
+            <h3 class="location-title">Tuam Town Centre</h3>
+            <p class="location-desc">Located in the heart of Tuam, our shop offers the perfect stop for locals and visitors alike to enjoy quality coffee, delicious treats, and friendly service, all served with a warm welcome and a smile.</p>
+
+            <div class="hours-list">
+              <div class="hours-row" data-day="weekday">
+                <span class="days">Monday – Friday</span>
+                <span class="time">07:00 – 16:30</span>
+              </div>
+              <div class="hours-row" data-day="weekend">
+                <span class="days">Saturday – Sunday</span>
+                <span class="time">08:00 – 17:00</span>
+              </div>
+            </div>
+
+            <div class="location-details">
+              <div class="detail-item">
+                <span class="detail-icon">📍</span>
+                <span>Tuam, Galway</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">#</span>
+                <span>H54 FE02</span>
+              </div>
+            </div>
+
+            <div class="map-container">
+              <div class="mock-map map-tuam">
+                <span class="pin">📍</span>
+                <span class="map-label">Jimmy's Tuam</span>
+              </div>
+              <a href="https://maps.google.com/?q=Jimmys+Coffee+Tuam+Galway+H54+FE02" target="_blank" rel="noopener" class="btn-map" id="map-link-tuam">Get Directions</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- 7. SPECIALTY MENU                                                        -->
+  <!-- ======================================================================= -->
+  <section id="menu" class="menu-section">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Our Specialty Menu</h2>
+        <div class="title-underline"></div>
+        <p class="section-subtitle">
+          Every hot drink includes a complimentary house brownie bite on the lid! Explore our curated selections below.
+        </p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="menu-filters">
+        <button class="filter-btn active" data-filter="hot-coffee" id="filter-hot-coffee">Hot Coffee</button>
+        <button class="filter-btn"        data-filter="other-hot"  id="filter-other-hot">Other Hot Drinks</button>
+        <button class="filter-btn"        data-filter="bakery"     id="filter-bakery">Bakery &amp; Pastries</button>
+        <button class="filter-btn"        data-filter="savoury"    id="filter-savoury">Savoury</button>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="menu-grid" id="menu-grid">
+
+        <!-- ── HOT COFFEE ─────────────────────────────────────────────── -->
+
+        <div class="menu-item-card" data-category="hot-coffee">
+          <div class="menu-item-illustration">
+            <img src="assets/DoubleExpresso.png" alt="Double Espresso" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Double Espresso</h4>
+            <p class="menu-item-desc">Two concentrated shots of our Roasted Brown single-origin espresso, rich with caramel sweetness and a golden crema.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="hot-coffee">
+          <div class="menu-item-illustration">
+            <img src="assets/Americano.png" alt="Americano" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Americano</h4>
+            <p class="menu-item-desc">A bold double shot of espresso extended with hot filtered water, clean and bright with a satisfying finish.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="hot-coffee">
+          <div class="menu-item-illustration">
+            <img src="assets/Latte.png" alt="Latte" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Latte</h4>
+            <p class="menu-item-desc">Velvety steamed milk poured over a double shot of espresso, finished with a delicate leaf of latte art.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="hot-coffee">
+          <div class="menu-item-illustration">
+            <img src="assets/Capuccino.png" alt="Cappuccino" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Cappuccino</h4>
+            <p class="menu-item-desc">Equal parts espresso, steamed milk and thick velvety foam, the perfectly balanced Italian classic.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="hot-coffee">
+          <div class="menu-item-illustration">
+            <img src="assets/FlatWhite.png" alt="Flat White" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Flat White</h4>
+            <p class="menu-item-desc">A double ristretto shot of Roasted Brown espresso with a smaller pour of silky microfoamed milk, concentrated and smooth.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="hot-coffee">
+          <div class="menu-item-illustration">
+            <img src="assets/Mocha.png" alt="Mocha" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Mocha</h4>
+            <p class="menu-item-desc">Espresso blended with rich Belgian chocolate, topped with silky steamed milk and a swirl of chocolate drizzle.</p>
+          </div>
+        </div>
+
+        <!-- ── OTHER HOT DRINKS ────────────────────────────────────────── -->
+
+        <div class="menu-item-card" data-category="other-hot">
+          <div class="menu-item-illustration">
+            <img src="assets/Hot Chocolate.png" alt="Hot Chocolate" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Hot Chocolate</h4>
+            <p class="menu-item-desc">Luscious Belgian hot chocolate made with real cocoa, topped with a cloud of foam and marshmallows.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="other-hot">
+          <div class="menu-item-illustration">
+            <img src="assets/KidsHCNew.png" alt="Kids Hot Chocolate" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Kids Hot Chocolate</h4>
+            <p class="menu-item-desc">A smaller, perfectly sweet hot chocolate made for little ones, topped with mini marshmallows.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="other-hot">
+          <div class="menu-item-illustration">
+            <img src="assets/Chai Latte.png" alt="Chai Latte" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Chai Latte</h4>
+            <p class="menu-item-desc">Aromatic spiced chai tea concentrate blended with steamed milk, warming and richly spiced.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="other-hot">
+          <div class="menu-item-illustration">
+            <img src="assets/Tea.png" alt="Tea" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Tea</h4>
+            <p class="menu-item-desc">Classic breakfast or herbal tea served in a proper cup with a saucer, steeped to perfection.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="other-hot">
+          <div class="menu-item-illustration">
+            <img src="assets/Babycino.png" alt="Babyccino" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Babyccino</h4>
+            <p class="menu-item-desc">A tiny cup of warm velvety steamed milk foam, a beloved treat for our youngest drive-thru visitors.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="other-hot">
+          <div class="menu-item-illustration">
+            <img src="assets/Matcha.png" alt="Matcha" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Matcha</h4>
+            <p class="menu-item-desc">Ceremonial grade matcha whisked with your choice of steamed milk, earthy and naturally sweet.</p>
+          </div>
+        </div>
+
+        <!-- ── BAKERY & PASTRIES ───────────────────────────────────────── -->
+
+        <div class="menu-item-card" data-category="bakery">
+          <div class="menu-item-illustration">
+            <img src="assets/Croissant.png" alt="Croissant" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Croissant</h4>
+            <p class="menu-item-desc">Classic all-butter croissant with golden flaky layers, baked fresh each morning and perfectly crisp.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="bakery">
+          <div class="menu-item-illustration">
+            <img src="assets/PainAuxChoc.png" alt="Pain au Chocolat" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Pain au Chocolat</h4>
+            <p class="menu-item-desc">Buttery laminated pastry wrapped around two fingers of rich Belgian dark chocolate, warm and indulgent.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="bakery">
+          <div class="menu-item-illustration">
+            <img src="assets/PainAuxRaisin.png" alt="Pain aux Raisins" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Pain aux Raisins</h4>
+            <p class="menu-item-desc">Spiral-rolled custard pastry studded with plump raisins, glazed to a beautiful golden shine.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="bakery">
+          <div class="menu-item-illustration">
+            <img src="assets/PastelDeNata.png" alt="Pastel de Nata" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Pastel de Nata</h4>
+            <p class="menu-item-desc">Authentic Portuguese custard tart with a flaky caramelised shell and silky egg custard centre.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="bakery">
+          <div class="menu-item-illustration">
+            <img src="assets/Cookie.png" alt="Cookies" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Cookies</h4>
+            <p class="menu-item-desc">Freshly baked chocolate chip cookies, chewy in the centre and golden at the edges — the ideal coffee companion.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="bakery">
+          <div class="menu-item-illustration">
+            <img src="assets/Brownie.png" alt="Brownies" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Brownies</h4>
+            <p class="menu-item-desc">Fudgy dark chocolate brownies with a crackled top and dense, gooey centre.</p>
+          </div>
+        </div>
+
+        <!-- ── SAVOURY ─────────────────────────────────────────────────── -->
+
+        <div class="menu-item-card" data-category="savoury">
+          <div class="menu-item-illustration">
+            <img src="assets/SausageRoll.png" alt="Pork &amp; Apple Sausage Roll" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Pork &amp; Apple Sausage Roll</h4>
+            <p class="menu-item-desc">Seasoned Irish pork and sweet apple filling in golden flaky puff pastry, baked to perfection.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-card" data-category="savoury">
+          <div class="menu-item-illustration">
+            <img src="assets/VeganRoll.png" alt="Mushroom &amp; Chickpea Vegan Roll" class="menu-item-img">
+          </div>
+          <div class="menu-item-info">
+            <h4 class="menu-item-title">Mushroom &amp; Chickpea Vegan Roll</h4>
+            <p class="menu-item-desc">A hearty vegan filling of earthy mushrooms and spiced chickpeas in the same beautifully flaky puff pastry casing.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- 8. BREW STARS — INFORMATIONAL LOYALTY SECTION                           -->
+  <!-- ======================================================================= -->
+  <section id="rewards" class="rewards-section">
+    <div class="section-container">
+      <div class="rewards-card glow-border">
+
+        <!-- Left: Info panel -->
+        <div class="rewards-info">
+          <div class="badge-accent">Loyalty Programme</div>
+          <h2 class="rewards-title">The Jimmy's<br><span class="text-gold">Brew Stars</span></h2>
+          <p class="rewards-lead">
+            Our loyalty programme is as simple as showing up. No app. No paper card. No hassle.
+          </p>
+
+          <div class="rewards-steps">
+            <div class="rstep">
+              <div class="rstep-icon">☕</div>
+              <div class="rstep-text">
+                <strong>Order any coffee</strong>
+                <span>At any of our drive-thru locations</span>
+              </div>
+            </div>
+            <div class="rstep">
+              <div class="rstep-icon">⭐</div>
+              <div class="rstep-text">
+                <strong>Earn 1 Star automatically</strong>
+                <span>Added instantly to your registered mobile or bank card</span>
+              </div>
+            </div>
+            <div class="rstep">
+              <div class="rstep-icon">🎁</div>
+              <div class="rstep-text">
+                <strong>10 Stars = Free Drink</strong>
+                <span>Your next specialty coffee is completely on us</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="rewards-note">
+            <span class="note-icon">ℹ️</span>
+            <p>Stars are tracked automatically via your registered mobile number or the bank card used at our drive-thru. To register or check your balance, simply speak to one of our baristas at the window.</p>
+          </div>
+        </div>
+
+        <!-- Right: Visual star card mockup -->
+        <div class="rewards-visual">
+          <div class="star-card">
+            <div class="star-card-header">
+              <img src="assets/logo.png" alt="Jimmy's" class="star-card-logo">
+              <div>
+                <div class="star-card-title">Brew Stars</div>
+                <div class="star-card-sub">Registered in-store</div>
+              </div>
+            </div>
+
+            <div class="star-grid" id="star-grid">
+              <!-- 10 star slots, animated via CSS -->
+              <div class="star-slot filled" style="--delay:0.0s"><span>⭐</span></div>
+              <div class="star-slot filled" style="--delay:0.1s"><span>⭐</span></div>
+              <div class="star-slot filled" style="--delay:0.2s"><span>⭐</span></div>
+              <div class="star-slot filled" style="--delay:0.3s"><span>⭐</span></div>
+              <div class="star-slot filled" style="--delay:0.4s"><span>⭐</span></div>
+              <div class="star-slot filled" style="--delay:0.5s"><span>⭐</span></div>
+              <div class="star-slot filled" style="--delay:0.6s"><span>⭐</span></div>
+              <div class="star-slot empty"   style="--delay:0.7s"><span>☆</span></div>
+              <div class="star-slot empty"   style="--delay:0.8s"><span>☆</span></div>
+              <div class="star-slot empty"   style="--delay:0.9s"><span>☆</span></div>
+            </div>
+
+            <div class="star-card-progress">
+              <div class="scp-bar-bg">
+                <div class="scp-bar-fill" style="width:70%"></div>
+              </div>
+              <div class="scp-label">7 / 10 Stars &nbsp;·&nbsp; 3 more until your free drink!</div>
+            </div>
+
+            <div class="star-card-footer">
+              <span class="scf-note">Ask our barista to check your Brew Stars at the window</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- 9. NEWSLETTER & CONTACT FORM                                             -->
+  <!-- ======================================================================= -->
+  <section id="contact" class="contact-section">
+    <div class="section-container">
+      <div class="contact-card grid-2 glow-border">
+        <div class="contact-info-panel">
+          <h3 class="panel-heading">Have any questions or catering requests?</h3>
+          <p class="panel-lead">Reach out to our team directly. We'd love to hear from you!</p>
+
+          <div class="panel-details">
+            <div class="panel-item">
+              <span class="panel-icon panel-icon-mail" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M3 5h18c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1H3c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1Zm9 8.15L20.15 7H3.85L12 13.15Zm-2.03-.06L4 8.6V17h16V8.6l-5.97 4.49L12 14.62l-2.03-1.53Z"/>
+                </svg>
+              </span>
+              <span>hello@jimmyscoffee.ie</span>
+            </div>
+            <div class="panel-item">
+              <span class="panel-icon panel-icon-facebook" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.08 5.66 21.24 10.44 22v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.5-3.91 3.78-3.91 1.1 0 2.24.2 2.24.2V8.6H15.2c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06Z"/>
+                </svg>
+              </span>
+              <span>Facebook: @jimmysdrivethrucoffee</span>
+            </div>
+            <div class="panel-item">
+              <span class="panel-icon panel-icon-instagram" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7.15A4.85 4.85 0 1 1 12 16.85 4.85 4.85 0 0 1 12 7.15Zm0 2A2.85 2.85 0 1 0 12 14.85 2.85 2.85 0 0 0 12 9.15Zm5.05-2.3a1.13 1.13 0 1 1-2.26 0 1.13 1.13 0 0 1 2.26 0Z"/>
+                </svg>
+              </span>
+              <span>Instagram: @jimmysirishcoffee</span>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contact-form">
+          <h4 class="form-title">Send Us a Message</h4>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="contact-name">Full Name</label>
+              <input type="text" id="contact-name" class="form-control" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email Address</label>
+              <input type="email" id="contact-email" class="form-control" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group full-width">
+              <label for="contact-message">Your Message</label>
+              <textarea id="contact-message" class="form-control" rows="4" placeholder="How can we help you?" required></textarea>
+            </div>
+            <div class="form-group full-width">
+              <button type="submit" class="btn btn-primary full-width" id="btn-send-message">Send Message</button>
+            </div>
+          </div>
+          <div id="form-success-msg" class="form-success-msg">Your message has been sent successfully! We will get back to you shortly.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- 10. FOOTER                                                               -->
+  <!-- ======================================================================= -->
+  <footer class="hero-footer-container">
+    <div class="hero-footer-card">
+      <div class="footer-top grid-2">
+        <div class="footer-cta">
+          <h3 class="footer-cta-title">Join the Brew Club</h3>
+          <p class="footer-cta-desc">Sign up for fresh brewing updates, menu additions, and exclusive digital promotions.</p>
+        </div>
+
+        <div class="footer-newsletter-box">
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" id="newsletter-email" class="newsletter-input" placeholder="Enter your email address" required aria-label="Email address">
+            <button type="submit" class="newsletter-btn" id="btn-newsletter-signup">Sign Up</button>
+          </form>
+          <div id="newsletter-success" class="newsletter-success">Thanks for subscribing! Check your inbox soon.</div>
+        </div>
+      </div>
+
+      <div class="footer-middle grid-4">
+        <div class="footer-brand-col">
+          <a href="#hero" class="footer-logo">
+            <img src="assets/logo.png" alt="Jimmys" class="footer-logo-img">
+          </a>
+          <p class="footer-brand-desc">Redefining drive-thru specialty coffee in Ireland. Consistency, speed, and premium ingredients with a smile.</p>
+        </div>
+
+        <div class="footer-dir-col">
+          <h5 class="footer-col-title">Our Concept</h5>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#menu" id="footer-hot-coffee-link">Roasted Brown Coffee</a></li>
+            <li><a href="#menu" id="footer-bakery-link">Fresh On-site Bakery</a></li>
+            <li><a href="#rewards">Brew Stars</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-dir-col">
+          <h5 class="footer-col-title">Locations</h5>
+          <ul class="footer-links">
+            <li><a href="#location-swinford">Swinford, Mayo</a></li>
+            <li><a href="#location-ballina">Ballina, Mayo</a></li>
+            <li><a href="#location-cavan">Cavan Town, Cavan</a></li>
+            <li><a href="#location-tuam">Tuam, Galway</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-dir-col">
+          <h5 class="footer-col-title">Payments</h5>
+          <div class="payment-logos" aria-label="Accepted payment methods">
+            <img src="assets/payment-square.svg" alt="Square" class="payment-logo">
+            <img src="assets/payment-apple-pay.svg" alt="Apple Pay" class="payment-logo payment-logo-wide">
+            <img src="assets/payment-google-pay.svg" alt="Google Pay" class="payment-logo payment-logo-wide">
+            <img src="assets/payment-visa.svg" alt="Visa" class="payment-logo">
+            <img src="assets/payment-mastercard.svg" alt="Mastercard" class="payment-logo">
+            <img src="assets/payment-amex.svg" alt="American Express" class="payment-logo">
+          </div>
+
+          <div class="footer-social-icons">
+            <a href="https://facebook.com/jimmysdrivethrucoffee" class="social-icon social-icon-facebook" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.08 5.66 21.24 10.44 22v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.5-3.91 3.78-3.91 1.1 0 2.24.2 2.24.2V8.6H15.2c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22C18.34 21.24 22 17.08 22 12.06Z"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com/jimmysirishcoffee" class="social-icon social-icon-instagram" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7.15A4.85 4.85 0 1 1 12 16.85 4.85 4.85 0 0 1 12 7.15Zm0 2A2.85 2.85 0 1 0 12 14.85 2.85 2.85 0 0 0 12 9.15Zm5.05-2.3a1.13 1.13 0 1 1-2.26 0 1.13 1.13 0 0 1 2.26 0Z"/>
+              </svg>
+            </a>
+            <a href="mailto:hello@jimmyscoffee.ie" class="social-icon social-icon-mail" aria-label="Email">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                <path d="M3 5h18c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1H3c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1Zm9 8.15L20.15 7H3.85L12 13.15Zm-2.03-.06L4 8.6V17h16V8.6l-5.97 4.49L12 14.62l-2.03-1.53Z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom text-center">
+        <div class="footer-divider"></div>
+        <p class="copyright-text">&copy; 2026 Jimmy's Drive-Thru Specialty Coffee. All rights reserved. Crafted with &#10084;&#65039; in Mayo &amp; Wicklow.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle -->
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+
+  <!-- GSAP Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Main App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
