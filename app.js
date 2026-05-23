@@ -72,10 +72,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   const mainHeader  = document.getElementById('main-header');
   const heroSection = document.getElementById('hero');
+  const navToggle   = document.getElementById('nav-toggle');
+  const headerNav   = document.getElementById('header-nav');
+
+  const closeMobileNav = () => {
+    headerNav?.classList.remove('nav-open');
+    navToggle?.setAttribute('aria-expanded', 'false');
+    navToggle?.setAttribute('aria-label', 'Open navigation menu');
+  };
+
+  navToggle?.addEventListener('click', () => {
+    const isOpen = headerNav?.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    navToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  });
+
+  headerNav?.querySelectorAll('.nav-link, .nav-cta-btn').forEach(link => {
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeMobileNav();
+  });
 
   let rafPending = false;
 
   const onScroll = () => {
+    closeMobileNav();
     if (rafPending) return;
     rafPending = true;
     requestAnimationFrame(() => {
