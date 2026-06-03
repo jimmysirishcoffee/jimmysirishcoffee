@@ -1881,6 +1881,10 @@ textarea.form-control { resize: vertical; }
   font-size: 0.82rem;
 }
 
+.newsletter-success--error {
+  color: #ef4444;
+}
+
 .footer-logo-only {
   display: flex;
   justify-content: center;
