@@ -376,20 +376,45 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm    = document.getElementById('contact-form');
   const contactSuccess = document.getElementById('form-success-msg');
 
-  contactForm?.addEventListener('submit', e => {
+  contactForm?.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = document.getElementById('btn-send-message');
     if (btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
 
-    setTimeout(() => {
+    if (contactSuccess) {
+      contactSuccess.style.display = 'none';
+      contactSuccess.classList.remove('form-success-msg--error');
+    }
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { Accept: 'application/json' },
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'Message could not be sent.');
+      }
+
       if (btn) { btn.textContent = 'Send Message'; btn.disabled = false; }
       contactForm.reset();
       if (contactSuccess) {
+        contactSuccess.textContent = 'Your message has been sent successfully! We will get back to you shortly.';
         contactSuccess.style.display = 'block';
         setTimeout(() => { contactSuccess.style.display = 'none'; }, 5000);
       }
       showToast('Message sent! We\'ll be in touch soon.', '✉️');
-    }, 1000);
+    } catch (error) {
+      if (btn) { btn.textContent = 'Send Message'; btn.disabled = false; }
+      if (contactSuccess) {
+        contactSuccess.textContent = 'Sorry, your message could not be sent. Please email hello@jimmys.ie directly.';
+        contactSuccess.classList.add('form-success-msg--error');
+        contactSuccess.style.display = 'block';
+      }
+      showToast('Message failed to send. Please try email instead.', 'Error');
+    }
   });
 
   const newsletterForm    = document.getElementById('newsletter-form');
