@@ -891,8 +891,13 @@
         </div>
 
         <div class="footer-newsletter-box">
-          <form class="newsletter-form" id="newsletter-form">
-            <input type="email" id="newsletter-email" class="newsletter-input" placeholder="Enter your email address" required aria-label="Email address">
+          <form class="newsletter-form" id="newsletter-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="6d7b4182-4e57-469b-9f6d-dc59bd7d3407">
+            <input type="hidden" name="subject" value="New Brew Club signup from jimmys.ie">
+            <input type="hidden" name="from_name" value="Jimmy's Coffee Brew Club">
+            <input type="hidden" name="message" value="A visitor signed up for the Jimmy's Coffee Brew Club.">
+            <input type="checkbox" name="botcheck" class="botcheck-field" tabindex="-1" autocomplete="off">
+            <input type="email" id="newsletter-email" name="email" class="newsletter-input" placeholder="Enter your email address" required aria-label="Email address">
             <button type="submit" class="newsletter-btn" id="btn-newsletter-signup">Sign Up</button>
           </form>
           <div id="newsletter-success" class="newsletter-success">Thanks for subscribing! Check your inbox soon.</div>
