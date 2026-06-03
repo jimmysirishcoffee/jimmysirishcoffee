@@ -377,6 +377,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactSuccess = document.getElementById('form-success-msg');
 
   contactForm?.addEventListener('submit', async e => {
+    if (contactForm.action.includes('formsubmit.co/') && !contactForm.action.includes('/ajax/')) {
+      const btn = document.getElementById('btn-send-message');
+      if (btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
+      return;
+    }
+
     e.preventDefault();
     const btn = document.getElementById('btn-send-message');
     if (btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
@@ -387,14 +393,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
+      const formData = new FormData(contactForm);
+      const payload = Object.fromEntries(formData.entries());
+      payload._replyto = payload.email;
+
       const response = await fetch(contactForm.action, {
         method: 'POST',
-        body: new FormData(contactForm),
-        headers: { Accept: 'application/json' },
+        body: JSON.stringify(payload),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
       });
       const result = await response.json();
 
-      if (!response.ok || !result.success) {
+      if (!response.ok || result.success === false) {
         throw new Error(result.message || 'Message could not be sent.');
       }
 
