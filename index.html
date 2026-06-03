@@ -16,9 +16,10 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Jimmy's Coffee | Drive-Thru Specialty Coffee Ireland">
   <meta property="og:description" content="Experience consistent excellence on-the-go. Specialty coffee by Roasted Brown, freshly-baked pastries and gourmet sourdough sandwiches.">
-  <meta property="og:image" content="assets/Screenshot 2026-05-20 130900.png">
-  <meta property="og:url" content="https://jimmyscoffee.ie/">
+  <meta property="og:image" content="https://jimmys.ie/assets/Screenshot%202026-05-20%20130900.png">
+  <meta property="og:url" content="https://jimmys.ie/">
   <meta property="og:type" content="website">
+  <link rel="canonical" href="https://jimmys.ie/">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/logo.png">
@@ -827,7 +828,7 @@
                   <path d="M3 5h18c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1H3c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1Zm9 8.15L20.15 7H3.85L12 13.15Zm-2.03-.06L4 8.6V17h16V8.6l-5.97 4.49L12 14.62l-2.03-1.53Z"/>
                 </svg>
               </span>
-              <span>hello@jimmyscoffee.ie</span>
+              <span>hello@jimmys.ie</span>
             </div>
             <div class="panel-item">
               <span class="panel-icon panel-icon-facebook" aria-hidden="true">
@@ -848,20 +849,24 @@
           </div>
         </div>
 
-        <form class="contact-form" id="contact-form">
+        <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="6d7b4182-4e57-469b-9f6d-dc59bd7d3407">
+          <input type="hidden" name="subject" value="New message from jimmys.ie">
+          <input type="hidden" name="from_name" value="Jimmy's Coffee Website">
+          <input type="checkbox" name="botcheck" class="botcheck-field" tabindex="-1" autocomplete="off">
           <h4 class="form-title">Send Us a Message</h4>
           <div class="form-grid">
             <div class="form-group">
               <label for="contact-name">Full Name</label>
-              <input type="text" id="contact-name" class="form-control" placeholder="John Doe" required>
+              <input type="text" id="contact-name" name="name" class="form-control" placeholder="John Doe" required>
             </div>
             <div class="form-group">
               <label for="contact-email">Email Address</label>
-              <input type="email" id="contact-email" class="form-control" placeholder="john@example.com" required>
+              <input type="email" id="contact-email" name="email" class="form-control" placeholder="john@example.com" required>
             </div>
             <div class="form-group full-width">
               <label for="contact-message">Your Message</label>
-              <textarea id="contact-message" class="form-control" rows="4" placeholder="How can we help you?" required></textarea>
+              <textarea id="contact-message" name="message" class="form-control" rows="4" placeholder="How can we help you?" required></textarea>
             </div>
             <div class="form-group full-width">
               <button type="submit" class="btn btn-primary full-width" id="btn-send-message">Send Message</button>
@@ -943,7 +948,7 @@
                 <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7.15A4.85 4.85 0 1 1 12 16.85 4.85 4.85 0 0 1 12 7.15Zm0 2A2.85 2.85 0 1 0 12 14.85 2.85 2.85 0 0 0 12 9.15Zm5.05-2.3a1.13 1.13 0 1 1-2.26 0 1.13 1.13 0 0 1 2.26 0Z"/>
               </svg>
             </a>
-            <a href="mailto:hello@jimmyscoffee.ie" class="social-icon social-icon-mail" aria-label="Email">
+            <a href="mailto:hello@jimmys.ie" class="social-icon social-icon-mail" aria-label="Email">
               <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
                 <path d="M3 5h18c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1H3c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1Zm9 8.15L20.15 7H3.85L12 13.15Zm-2.03-.06L4 8.6V17h16V8.6l-5.97 4.49L12 14.62l-2.03-1.53Z"/>
               </svg>
