@@ -433,20 +433,45 @@ document.addEventListener('DOMContentLoaded', () => {
   const newsletterForm    = document.getElementById('newsletter-form');
   const newsletterSuccess = document.getElementById('newsletter-success');
 
-  newsletterForm?.addEventListener('submit', e => {
+  newsletterForm?.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = document.getElementById('btn-newsletter-signup');
     if (btn) { btn.textContent = 'Signing up...'; btn.disabled = true; }
 
-    setTimeout(() => {
+    if (newsletterSuccess) {
+      newsletterSuccess.style.display = 'none';
+      newsletterSuccess.classList.remove('newsletter-success--error');
+    }
+
+    try {
+      const response = await fetch(newsletterForm.action, {
+        method: 'POST',
+        body: new FormData(newsletterForm),
+        headers: { Accept: 'application/json' },
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'Signup could not be sent.');
+      }
+
       if (btn) { btn.textContent = 'Sign Up'; btn.disabled = false; }
       newsletterForm.reset();
       if (newsletterSuccess) {
+        newsletterSuccess.textContent = 'Thanks for subscribing! Check your inbox soon.';
         newsletterSuccess.style.display = 'block';
         setTimeout(() => { newsletterSuccess.style.display = 'none'; }, 5000);
       }
       showToast('Welcome to the Brew Club!', '🎉');
-    }, 900);
+    } catch (error) {
+      if (btn) { btn.textContent = 'Sign Up'; btn.disabled = false; }
+      if (newsletterSuccess) {
+        newsletterSuccess.textContent = 'Sorry, signup could not be sent. Please try again soon.';
+        newsletterSuccess.classList.add('newsletter-success--error');
+        newsletterSuccess.style.display = 'block';
+      }
+      showToast('Brew Club signup failed. Please try again.', 'Error');
+    }
   });
 
 
