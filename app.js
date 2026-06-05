@@ -6,10 +6,12 @@
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
-window.addEventListener('beforeunload', () => window.scrollTo(0, 0));
 
 document.addEventListener('DOMContentLoaded', () => {
-  window.scrollTo(0, 0);
+  const navEntry = performance.getEntriesByType?.('navigation')?.[0];
+  if (!window.location.hash || navEntry?.type === 'reload') {
+    window.scrollTo(0, 0);
+  }
 
   // =========================================================================
   // 1. PRELOADER
@@ -91,6 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', closeMobileNav);
   });
 
+  closeMobileNav();
+
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) closeMobileNav();
   });
@@ -139,13 +143,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Observe card groups with per-card stagger delay.
-  // .location-card and .menu-item-card are also handled by GSAP when available;
+  // .location-card is also handled by GSAP when available;
   // only register them with IO when GSAP is absent (handled in the GSAP block below).
   const gsapAvailable = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
 
   const ioCardSelectors = gsapAvailable
     ? ['.hero-feature-card']
-    : ['.menu-item-card', '.location-card', '.hero-feature-card'];
+    : ['.location-card', '.hero-feature-card'];
 
   ioCardSelectors.forEach(selector => {
     const cards = document.querySelectorAll(selector);
@@ -290,88 +294,47 @@ document.addEventListener('DOMContentLoaded', () => {
   updateStatus();
   setInterval(updateStatus, 60_000);
 
-
-  // =========================================================================
-  // 6. MENU FILTER — animated card-exit / card-enter
-  // =========================================================================
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const menuCards  = Array.from(document.querySelectorAll('.menu-item-card'));
-  let filterBusy   = false;
-
-  // Set initial state: show only the active tab's category on load
-  const initialFilter = document.querySelector('.filter-btn.active')?.dataset.filter;
-  if (initialFilter) {
-    menuCards.forEach(c => {
-      if (c.dataset.category !== initialFilter) c.style.display = 'none';
-    });
-  }
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (filterBusy) return;
-      filterBusy = true;
-
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.dataset.filter;
-      const showing = menuCards.filter(c => c.style.display !== 'none');
-      const toShow  = menuCards.filter(c => c.dataset.category === filter);
-      const toHide  = menuCards.filter(c => c.dataset.category !== filter);
-
-      // HIDE phase: add .card-exit to all currently visible cards
-      showing.forEach(c => c.classList.add('card-exit'));
-
-      setTimeout(() => {
-        // After exit transition, hide filtered-out cards and clean up
-        toHide.forEach(c => {
-          c.style.display = 'none';
-          c.classList.remove('card-exit', 'card-enter', 'card-enter--active');
-        });
-        showing.forEach(c => c.classList.remove('card-exit'));
-
-        // SHOW phase: reveal matching cards and animate them in
-        toShow.forEach((c, i) => {
-          c.style.display = 'flex';
-          c.classList.remove('card-enter--active');
-          c.classList.add('card-enter');
-
-          setTimeout(() => {
-            requestAnimationFrame(() => c.classList.add('card-enter--active'));
-          }, i * 60);
-        });
-
-        // Clean enter classes after all transitions settle
-        const totalDelay = toShow.length * 60 + 320;
-        setTimeout(() => {
-          toShow.forEach(c => c.classList.remove('card-enter', 'card-enter--active'));
-          filterBusy = false;
-        }, totalDelay);
-
-      }, 220);
+  document.querySelectorAll('.btn-map').forEach(link => {
+    link.addEventListener('click', event => {
+      event.stopPropagation();
+      link.blur();
     });
   });
 
-  function openMenuFilterFromFooter(e, filterButtonId) {
-    e.preventDefault();
-    const filterButton = document.getElementById(filterButtonId);
-    if (filterButton && !filterButton.classList.contains('active')) {
-      filterButton.click();
-    }
-    document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  const canTapFlipLocations = () =>
+    window.matchMedia('(hover: none), (pointer: coarse), (max-width: 768px)').matches;
 
-  document.getElementById('footer-hot-coffee-link')?.addEventListener('click', e => {
-    openMenuFilterFromFooter(e, 'filter-hot-coffee');
+  document.querySelectorAll('.location-flip-card').forEach(card => {
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', 'Tap to view store hours');
+
+    const toggleCard = () => {
+      if (!canTapFlipLocations()) return;
+      const willOpen = !card.classList.contains('is-flipped');
+      document.querySelectorAll('.location-flip-card.is-flipped').forEach(openCard => {
+        if (openCard !== card) openCard.classList.remove('is-flipped');
+      });
+      card.classList.toggle('is-flipped', willOpen);
+      card.setAttribute('aria-label', willOpen ? 'Tap to close store hours' : 'Tap to view store hours');
+    };
+
+    card.addEventListener('click', event => {
+      if (event.target.closest('a')) return;
+      toggleCard();
+    });
+
+    card.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      toggleCard();
+    });
   });
 
-  document.getElementById('footer-bakery-link')?.addEventListener('click', e => {
-    openMenuFilterFromFooter(e, 'filter-bakery');
-  });
 
 
   // =========================================================================
-  // 7. CONTACT & NEWSLETTER FORMS
+  // 7. CONTACT FORM
   // =========================================================================
   const contactForm    = document.getElementById('contact-form');
   const contactSuccess = document.getElementById('form-success-msg');
@@ -429,51 +392,6 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast('Message failed to send. Please try email instead.', 'Error');
     }
   });
-
-  const newsletterForm    = document.getElementById('newsletter-form');
-  const newsletterSuccess = document.getElementById('newsletter-success');
-
-  newsletterForm?.addEventListener('submit', async e => {
-    e.preventDefault();
-    const btn = document.getElementById('btn-newsletter-signup');
-    if (btn) { btn.textContent = 'Signing up...'; btn.disabled = true; }
-
-    if (newsletterSuccess) {
-      newsletterSuccess.style.display = 'none';
-      newsletterSuccess.classList.remove('newsletter-success--error');
-    }
-
-    try {
-      const response = await fetch(newsletterForm.action, {
-        method: 'POST',
-        body: new FormData(newsletterForm),
-        headers: { Accept: 'application/json' },
-      });
-      const result = await response.json();
-
-      if (!response.ok || !result.success) {
-        throw new Error(result.message || 'Signup could not be sent.');
-      }
-
-      if (btn) { btn.textContent = 'Sign Up'; btn.disabled = false; }
-      newsletterForm.reset();
-      if (newsletterSuccess) {
-        newsletterSuccess.textContent = 'Thanks for subscribing! Check your inbox soon.';
-        newsletterSuccess.style.display = 'block';
-        setTimeout(() => { newsletterSuccess.style.display = 'none'; }, 5000);
-      }
-      showToast('Welcome to the Brew Club!', '🎉');
-    } catch (error) {
-      if (btn) { btn.textContent = 'Sign Up'; btn.disabled = false; }
-      if (newsletterSuccess) {
-        newsletterSuccess.textContent = 'Sorry, signup could not be sent. Please try again soon.';
-        newsletterSuccess.classList.add('newsletter-success--error');
-        newsletterSuccess.style.display = 'block';
-      }
-      showToast('Brew Club signup failed. Please try again.', 'Error');
-    }
-  });
-
 
   // =========================================================================
   // 8. GSAP PARALLAX SHOWCASE (PINNED VIEWPORT SPLIT-REVEAL SYSTEM)
@@ -851,23 +769,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     );
 
-    // --- Menu cards stagger ---
-    gsap.fromTo('.menu-item-card',
-      { y: 40, opacity: 0 },
-      {
-        y: 0, opacity: 1,
-        stagger: 0.1,
-        duration: 0.7,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.menu-section',
-          start: 'top 80%',
-          toggleActions: 'play reverse play reverse',
-        }
-      }
-    );
 
-    // --- Brew Stars replay reveal ---
+    // --- Jimmy's Points replay reveal ---
     bindReplaySection({
       trigger: '.rewards-section',
       start: 'top 78%',
@@ -907,7 +810,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll(
       '.about-text-content, .about-image-card, .rstep, .star-card'
     ).forEach(el => { el.style.opacity = '1'; });
-    document.querySelectorAll('.location-card, .menu-item-card').forEach(el => {
+    document.querySelectorAll('.location-card').forEach(el => {
       el.classList.add('is-visible');
     });
     // IntersectionObserver handles .hero-feature-card
@@ -952,9 +855,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Hover: all interactive elements — use event delegation for robustness
   const HOVER_SELECTOR = 'a, button, [role="button"], label, ' +
-    '.btn, .filter-btn, .logo-link, .nav-link, .social-icon, ' +
-    '.menu-item-card, .star-slot, .nav-cta-btn, .newsletter-btn, ' +
-    '.btn-outline, .btn-primary, #theme-toggle';
+    '.btn, .logo-link, .nav-link, ' +
+    '.location-card, .star-slot, .nav-cta-btn, ' +
+    '.btn-outline, .btn-primary';
 
   document.addEventListener('mouseover', e => {
     if (e.target.closest(HOVER_SELECTOR)) {
@@ -981,35 +884,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // =========================================================================
-  // 11. DARK / LIGHT MODE TOGGLE
-  // =========================================================================
-  const themeToggle = document.getElementById('theme-toggle');
-  const htmlEl      = document.documentElement;
-
-  function applyTheme(theme) {
-    if (theme === 'light') {
-      htmlEl.setAttribute('data-theme', 'light');
-      if (themeToggle) themeToggle.textContent = '☀️';
-    } else {
-      htmlEl.removeAttribute('data-theme');
-      if (themeToggle) themeToggle.textContent = '🌙';
-    }
-  }
-
-  // Restore saved preference
-  applyTheme(localStorage.getItem('jc-theme') || 'dark');
-
-  themeToggle?.addEventListener('click', () => {
-    const current = htmlEl.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-    const next    = current === 'light' ? 'dark' : 'light';
-    localStorage.setItem('jc-theme', next);
-    applyTheme(next);
-  });
-
 
   // =========================================================================
-  // 12. BREW STARS COUNT-UP ANIMATION
+  // 12. JIMMY'S POINTS COUNT-UP ANIMATION
   // =========================================================================
   const starCard    = document.querySelector('.star-card');
   const starGrid    = document.getElementById('star-grid');
@@ -1017,24 +894,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const scpLabel    = document.querySelector('.scp-label');
 
   if (starCard && scpBarFill && scpLabel) {
-    const TARGET_STARS    = 7;
+    const TARGET_POINTS    = 7;
     const TARGET_WIDTH    = 70;
     const DURATION_MS     = 1400;
     const EASE_CB         = 'cubic-bezier(0.22, 1, 0.36, 1)';
     const COUNT_INTERVAL  = 200;
     let countTick = null;
 
-    const resetBrewStarsProgress = () => {
+    const resetPointsProgress = () => {
       if (countTick) clearInterval(countTick);
       countTick = null;
       scpBarFill.style.transition = 'none';
       scpBarFill.style.width = '0%';
-      scpLabel.textContent = '0 / 10 Stars';
+      scpLabel.textContent = '0 / 10 points';
       starGrid?.classList.remove('star-animate');
     };
 
-    const playBrewStarsProgress = () => {
-      resetBrewStarsProgress();
+    const playPointsProgress = () => {
+      resetPointsProgress();
 
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
@@ -1047,36 +924,36 @@ document.addEventListener('DOMContentLoaded', () => {
       let count = 0;
       const steps = Math.floor(DURATION_MS / COUNT_INTERVAL);
       countTick = setInterval(() => {
-        count = Math.min(count + Math.ceil(TARGET_STARS / steps), TARGET_STARS);
-        scpLabel.textContent = `${count} / 10 Stars\u00a0\u00b7\u00a0${10 - count} more until your free drink!`;
-        if (count >= TARGET_STARS) {
+        count = Math.min(count + Math.ceil(TARGET_POINTS / steps), TARGET_POINTS);
+        scpLabel.textContent = `${count} / 10 points\u00a0\u00b7\u00a0${10 - count} more until your free drink!`;
+        if (count >= TARGET_POINTS) {
           clearInterval(countTick);
           countTick = null;
         }
       }, COUNT_INTERVAL);
     };
 
-    resetBrewStarsProgress();
+    resetPointsProgress();
 
     if (typeof ScrollTrigger !== 'undefined') {
       ScrollTrigger.create({
         trigger: '.rewards-section',
         start: 'top 78%',
         end: 'bottom 25%',
-        onEnter: playBrewStarsProgress,
-        onEnterBack: playBrewStarsProgress,
-        onLeave: resetBrewStarsProgress,
-        onLeaveBack: resetBrewStarsProgress
+        onEnter: playPointsProgress,
+        onEnterBack: playPointsProgress,
+        onLeave: resetPointsProgress,
+        onLeaveBack: resetPointsProgress
       });
     } else {
-      const brewStarsObserver = new IntersectionObserver((entries) => {
+      const pointsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) playBrewStarsProgress();
-          else resetBrewStarsProgress();
+          if (entry.isIntersecting) playPointsProgress();
+          else resetPointsProgress();
         });
       }, { threshold: 0.5 });
 
-      brewStarsObserver.observe(starCard);
+      pointsObserver.observe(starCard);
     }
   }
 
