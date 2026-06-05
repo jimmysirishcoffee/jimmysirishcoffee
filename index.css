@@ -2593,21 +2593,74 @@ body {
     cursor: pointer;
   }
 
+  .location-photo-overlay {
+    inset: auto 12px 12px;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 12px 14px;
+    background: rgba(17, 17, 17, 0.72);
+    border-color: rgba(255,255,255,0.16);
+    border-radius: 14px;
+  }
+
+  .location-photo-overlay .location-title {
+    grid-column: 1;
+    grid-row: 1;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    padding: 0;
+    color: #ffffff;
+    background: transparent;
+    border-radius: 0;
+    font-size: 1.18rem;
+    line-height: 1.1;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .location-pin {
+    grid-column: 1;
+    grid-row: 2;
+    display: inline-flex;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0;
+    color: rgba(255,255,255,0.86);
+    background: transparent;
+    border-radius: 0;
+    font-size: 0.88rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .location-photo-overlay .status-badge {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: start;
+    max-width: 100%;
+    margin-top: 6px;
+    padding: 6px 10px;
+    font-size: 0.76rem;
+    line-height: 1.15;
+    white-space: normal;
+  }
+
   .location-flip-hint {
     position: absolute;
-    top: 18px;
-    right: 18px;
+    top: 14px;
+    right: 14px;
     z-index: 2;
     display: inline-flex;
     align-items: center;
     min-height: 32px;
-    padding: 7px 12px;
+    padding: 7px 11px;
     color: #111111;
     background: #ffffff;
     border-radius: var(--radius-pill);
     border: 1px solid rgba(17,17,17,0.12);
     box-shadow: 0 10px 24px rgba(17,17,17,0.18);
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.05em;
