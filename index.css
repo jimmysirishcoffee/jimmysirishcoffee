@@ -2389,18 +2389,28 @@ body {
 }
 
 .hero-video-content .hero-title {
+  font-family: var(--font-sans);
   color: #ffffff;
   font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  white-space: nowrap;
   margin-bottom: 16px;
 }
 
 .hero-video-content .hero-lead {
+  font-family: var(--font-sans);
   color: rgba(255,255,255,0.9);
+  font-weight: 400;
+  letter-spacing: 0.04em;
   margin: 0 auto 28px;
   max-width: 620px;
 }
 
 .hero-video-content .btn {
+  font-family: var(--font-sans);
+  letter-spacing: 0.08em;
   background: #ffffff;
   color: #111111;
   border-color: #ffffff;
