@@ -2692,8 +2692,8 @@ body {
   .location-flip-back::after {
     content: "Tap card to close";
     position: absolute;
-    top: 18px;
-    right: 18px;
+    top: 16px;
+    right: 16px;
     padding: 7px 12px;
     color: #111111;
     background: #ffffff;
@@ -2702,6 +2702,16 @@ body {
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+  }
+
+  .location-flip-back {
+    padding-top: 78px;
+  }
+
+  .location-flip-back .location-city {
+    max-width: 62%;
+    font-size: 1.22rem;
+    line-height: 1.15;
   }
 }
 
