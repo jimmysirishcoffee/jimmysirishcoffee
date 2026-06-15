@@ -2399,6 +2399,19 @@ body {
   margin-bottom: 16px;
 }
 
+.hero-logo-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-logo-wordmark {
+  display: block;
+  width: min(620px, 82vw);
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
 .hero-video-content .hero-lead {
   font-family: var(--font-sans);
   color: rgba(255,255,255,0.9);
