@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
       6: { open: 480,  close: 1020 },  // Sat 08:00-17:00
     },
     ballina: {
-      0: { open: 510,  close: 1020 },  // Sun 08:30-17:00
+      0: { open: 480,  close: 1020 },  // Sun 08:00-17:00
       1: { open: 420,  close: 1020 },
       2: { open: 420,  close: 1020 },
       3: { open: 420,  close: 1020 },
