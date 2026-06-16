@@ -2275,8 +2275,9 @@ textarea.form-control { resize: vertical; }
   }
 
   .community-img {
-    height: 360px;
+    height: auto;
     min-height: 0;
+    object-fit: contain;
     object-position: center center;
   }
 
