@@ -165,13 +165,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   const SCHEDULES = {
     swinford: {
-      0: { open: 480,  close: 1020 },  // Sun 08:00-17:00
+      0: { open: 510,  close: 1020 },  // Sun 08:30-17:00
       1: { open: 420,  close: 990  },  // Mon 07:00–16:30
       2: { open: 420,  close: 990  },
       3: { open: 420,  close: 990  },
       4: { open: 420,  close: 990  },
       5: { open: 420,  close: 990  },  // Fri
-      6: { open: 480,  close: 1020 },  // Sat 08:00-17:00
+      6: { open: 510,  close: 1020 },  // Sat 08:30-17:00
     },
     cavan: {
       0: { open: 480,  close: 1020 },  // Sun 08:00-17:00
