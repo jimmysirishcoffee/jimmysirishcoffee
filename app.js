@@ -1,5 +1,5 @@
 /**
- * Jimmy's Coffee — Core App Script
+ * Jimmys Coffee — Core App Script
  * Brand: Black & White / Monochromatic
  */
 
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   const SCHEDULES = {
     swinford: {
-      0: { open: 510,  close: 1020 },  // Sun 08:30-17:00
+      0: { open: 480,  close: 1020 },  // Sun 08:00-17:00
       1: { open: 420,  close: 990  },  // Mon 07:00–16:30
       2: { open: 420,  close: 990  },
       3: { open: 420,  close: 990  },
@@ -769,7 +769,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
 
-    // --- Jimmy's Points replay reveal ---
+    // --- Jimmys Points replay reveal ---
     bindReplaySection({
       trigger: '.rewards-section',
       start: 'top 78%',
@@ -885,7 +885,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // =========================================================================
-  // 12. JIMMY'S POINTS COUNT-UP ANIMATION
+  // 12. JIMMYS POINTS COUNT-UP ANIMATION
   // =========================================================================
   const starCard    = document.querySelector('.star-card');
   const starGrid    = document.getElementById('star-grid');
