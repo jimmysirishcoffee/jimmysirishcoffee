@@ -165,30 +165,30 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   const SCHEDULES = {
     swinford: {
-      0: { open: 510,  close: 960  },  // Sun 08:30-16:00
+      0: { open: 480,  close: 1020 },  // Sun 08:00-17:00
       1: { open: 420,  close: 990  },  // Mon 07:00–16:30
       2: { open: 420,  close: 990  },
       3: { open: 420,  close: 990  },
       4: { open: 420,  close: 990  },
       5: { open: 420,  close: 990  },  // Fri
-      6: { open: 510,  close: 1020 },  // Sat 08:30-17:00
+      6: { open: 480,  close: 1020 },  // Sat 08:00-17:00
     },
     cavan: {
-      0: { open: 420,  close: 1020 },  // Daily 07:00-17:00
+      0: { open: 480,  close: 1020 },  // Sun 08:00-17:00
       1: { open: 420,  close: 1020 },
       2: { open: 420,  close: 1020 },
       3: { open: 420,  close: 1020 },
       4: { open: 420,  close: 1020 },
       5: { open: 420,  close: 1020 },
-      6: { open: 420,  close: 1020 },
+      6: { open: 480,  close: 1020 },  // Sat 08:00-17:00
     },
     tuam: {
       0: { open: 480,  close: 1020 },  // Sun 08:00-17:00
-      1: { open: 420,  close: 990  },  // Mon 07:00-16:30
-      2: { open: 420,  close: 990  },
-      3: { open: 420,  close: 990  },
-      4: { open: 420,  close: 990  },
-      5: { open: 420,  close: 990  },
+      1: { open: 420,  close: 1020 },  // Mon 07:00-17:00
+      2: { open: 420,  close: 1020 },
+      3: { open: 420,  close: 1020 },
+      4: { open: 420,  close: 1020 },
+      5: { open: 420,  close: 1020 },
       6: { open: 480,  close: 1020 },  // Sat 08:00-17:00
     },
     ballina: {
@@ -234,15 +234,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!card) return;
     card.querySelectorAll('.hours-row').forEach(r => r.classList.remove('active-day'));
     const isWeekday = day >= 1 && day <= 5;
-    if (cardId === 'location-cavan') {
-      card.querySelector('[data-day="daily"]')
-          ?.classList.add('active-day');
-    } else if (cardId === 'location-tuam') {
+    if (cardId === 'location-cavan' || cardId === 'location-tuam') {
       card.querySelector(isWeekday ? '[data-day="weekday"]' : '[data-day="weekend"]')
           ?.classList.add('active-day');
     } else {
       const map = { 0: 'sunday', 6: 'saturday' };
-      card.querySelector(`[data-day="${isWeekday ? 'weekday' : (map[day] || 'weekend')}"]`)
+      const dayKey = isWeekday ? 'weekday' : (map[day] || 'weekend');
+      const row = card.querySelector(`[data-day="${dayKey}"]`) || card.querySelector('[data-day="weekend"]');
+      row
           ?.classList.add('active-day');
     }
   }
