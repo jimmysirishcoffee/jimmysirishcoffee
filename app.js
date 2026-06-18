@@ -1,5 +1,5 @@
 /**
- * Jimmys Coffee — Core App Script
+ * Jimmys - Core App Script
  * Brand: Black & White / Monochromatic
  */
 
