@@ -330,6 +330,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  document.querySelectorAll('.gift-card-flip').forEach(card => {
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', 'Tap to view gift card details');
+
+    const toggleCard = () => {
+      if (!canTapFlipLocations()) return;
+      const willOpen = !card.classList.contains('is-flipped');
+      card.classList.toggle('is-flipped', willOpen);
+      card.setAttribute('aria-label', willOpen ? 'Tap to close gift card details' : 'Tap to view gift card details');
+    };
+
+    card.addEventListener('click', event => {
+      if (event.target.closest('a')) return;
+      toggleCard();
+    });
+
+    card.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      toggleCard();
+    });
+  });
+
 
 
   // =========================================================================
