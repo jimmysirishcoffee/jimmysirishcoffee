@@ -1615,7 +1615,124 @@ html[data-theme="light"] .status-badge {
 }
 
 /* =========================================================================
-   12. CONTACT FORM
+   12. GIFT CARDS SECTION
+   ========================================================================= */
+.gift-cards-section {
+  padding: 0 0 120px;
+  background-color: var(--color-black-soft);
+  scroll-margin-top: calc(var(--header-height) + 24px);
+}
+
+.gift-card-flip {
+  max-width: 920px;
+  min-height: 340px;
+  margin: 0 auto;
+  background: transparent;
+  perspective: 1200px;
+}
+
+.gift-card-flip-inner {
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+  transition: transform 0.95s cubic-bezier(0.2, 0.78, 0.18, 1);
+  transform-style: preserve-3d;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gift-card-flip:hover .gift-card-flip-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+.gift-card-flip.is-flipped .gift-card-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.gift-card-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-lg);
+  backface-visibility: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.gift-card-front {
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gift-card-logo {
+  width: min(58%, 420px);
+  height: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+.gift-card-hint {
+  display: none;
+}
+
+.gift-card-back {
+  padding: 56px 64px;
+  transform: rotateY(180deg);
+  background:
+    linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(255, 255, 255, 0.03)),
+    var(--color-black-card);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gift-cards-title {
+  font-family: var(--font-serif);
+  font-size: 2.6rem;
+  line-height: 1.15;
+  color: var(--color-white);
+  margin: 14px 0 16px;
+}
+
+.gift-cards-text {
+  max-width: 620px;
+  margin: 0 auto 30px;
+  color: var(--color-white-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.gift-cards-btn {
+  display: inline-flex;
+}
+
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+  .gift-card-flip {
+    cursor: pointer;
+  }
+
+  .gift-card-hint {
+    display: inline-flex;
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    padding: 12px 18px;
+    border-radius: var(--radius-pill);
+    background: var(--color-white);
+    color: var(--color-black);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+
+/* =========================================================================
+   13. CONTACT FORM
    ========================================================================= */
 .contact-section {
   padding: 80px 0;
@@ -2148,6 +2265,7 @@ textarea.form-control { resize: vertical; }
   .p-cup-img   { height: auto; }
   .rewards-card { grid-template-columns: 1fr; }
   .rewards-info, .rewards-visual { padding: 48px; }
+  .gift-card-back { padding: 48px; }
 }
 
 @media (max-width: 768px) {
@@ -2326,6 +2444,14 @@ textarea.form-control { resize: vertical; }
   .rewards-info, .rewards-visual { padding: 32px; }
   .rewards-title { font-size: 2rem; }
   .star-grid { gap: 8px; }
+  .gift-cards-section { padding-bottom: 80px; }
+  .gift-card-flip,
+  .gift-card-flip-inner {
+    min-height: 360px;
+  }
+  .gift-card-back { padding: 36px 28px; }
+  .gift-cards-title { font-size: 2rem; }
+  .gift-cards-text { font-size: 0.95rem; }
 
   .contact-form, .contact-info-panel { padding: 28px; }
   .form-grid { grid-template-columns: 1fr; }
