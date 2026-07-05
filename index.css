@@ -1618,7 +1618,7 @@ html[data-theme="light"] .status-badge {
    12. GIFT CARDS SECTION
    ========================================================================= */
 .gift-cards-section {
-  padding: 0 0 120px;
+  padding: 96px 0 150px;
   background-color: var(--color-black-soft);
   scroll-margin-top: calc(var(--header-height) + 24px);
 }
